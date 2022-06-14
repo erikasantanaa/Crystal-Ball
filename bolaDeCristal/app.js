@@ -1,7 +1,7 @@
-//variaveis? dados de entrada? dados de saídas?
-
 const elementoResposta = document.querySelector('#resposta')
 const inputPergunta = document.querySelector('#inputPergunta')
+const buttonPerguntar = document.querySelector('#buttonPerguntar')
+
 const respostas = [
   "Certeza!",
   "Não tenho tanta certeza.",
@@ -24,19 +24,24 @@ const respostas = [
   "Sinais apontam que sim.",
 ]
 
-
-
-//clicar em fazer pergunta
 function fazerPergunta() {
-    //pegar valor input
+    
     if (inputPergunta.value === '') {
         alert('Digite sua pergunta')
         return
     }
 
-    //gerar numero aleatorio
+    buttonPerguntar.setAttribute('disabled', true)
+
+    const pergunta = `<div> ${inputPergunta.value} </div>` 
+
     const totalRespostas = respostas.length
     const numeroAleatorio = Math.floor(Math.random() * totalRespostas)
 
-    elementoResposta.innerHTML = respostas[numeroAleatorio]
+    elementoResposta.innerHTML = `${pergunta} ${respostas[numeroAleatorio]}`
 }
+
+setTimeout(function() {
+    elementoResposta.style.opacity = 0;
+    buttonPerguntar.removeAttribute('disabled')
+}, 3000)
