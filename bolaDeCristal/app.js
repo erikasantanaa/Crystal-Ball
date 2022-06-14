@@ -31,8 +31,6 @@ function fazerPergunta() {
         return
     }
 
-    buttonPerguntar.setAttribute('disabled', true)
-
     const pergunta = `<div> ${inputPergunta.value} </div>` 
 
     const totalRespostas = respostas.length
@@ -43,5 +41,4 @@ function fazerPergunta() {
 
 setTimeout(function() {
     elementoResposta.style.opacity = 0;
-    buttonPerguntar.removeAttribute('disabled')
-}, 3000)
+}, 4000)
